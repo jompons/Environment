@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
+
         applicationId "com.jompon.environment.sample"
         minSdkVersion 17
         targetSdkVersion 26
@@ -14,6 +15,27 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    flavorDimensions "api", "mode"
+    productFlavors {
+        production {
+            applicationId "com.jompon.environment.sampleprod"
+            dimension "mode"
+        }
+        dev {
+            applicationId "com.jompon.environment.sampledev"
+            dimension "mode"
+        }
+        minApi24 {
+            dimension "api"
+            minSdkVersion 24
+            versionNameSuffix "-minApi24"
+        }
+        minApi21 {
+            dimension "api"
+            minSdkVersion 21
+            versionNameSuffix "-minApi21"
         }
     }
 }
